@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer</title>
+    <link rel="stylesheet" href="{% static 'mycss1.css' %}">
+</head>
+<body>
+
+    <h1>This is coustomer Page</h1>
+<!-- <div>
+    {% for i in data %}
+
+   <h1>
+    {{i.title}}
+   </h1>
+   <h3>
+    {{i.body}}
+   </h3>
+   <p >
+    <img id="gg" src="{{ i.photo.url }}" alt="img">
+   </p>
+   <h5>
+    {{i.created_time}}
+   </h5>
+   <hr>
+
+
+    {% endfor %}
+</div> -->   
+
+
+<div>
+    {% for i in data %}
+
+   <h1>
+   <a href="{% url 'detail' i.id %}"> {{i.title}} </a>
+   </h1>
+    {% endfor %}
+   <hr>
+</div>
+
+
+
+
+</body>
+</html>
