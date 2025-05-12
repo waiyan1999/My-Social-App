@@ -16,15 +16,17 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from posts.views import customer_data,post_detail
+from posts.views import customer_data,post_detail,create_post,createform
 
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('customer/', customer_data),
-    path('deatail/<int:pk>/',post_detail, name='detail')
+    path('customer/', customer_data, name = 'customer'),
+    path('deatail/<int:pk>/',post_detail, name='detail'),
+    path('createform/',create_post, name = "create_post"),
+    path('form/',createform , name = 'form'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
