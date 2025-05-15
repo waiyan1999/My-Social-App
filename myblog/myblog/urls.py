@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from posts.views import customer_data,post_detail,create_post,createform
+from posts.views import customer_data,post_detail,create_post,createform,create_blog,saveblog,blog_list,blog_detail,delete_blog
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -27,6 +27,11 @@ urlpatterns = [
     path('deatail/<int:pk>/',post_detail, name='detail'),
     path('createform/',create_post, name = "create_post"),
     path('form/',createform , name = 'form'),
+    path('createblog/', create_blog, name = "createblog"),
+    path('saveblog/', saveblog , name = 'saveblog'),
+    path('bloglist',blog_list, name= 'bloglist'),
+    path('blogdetail/<int:id>/', blog_detail, name= 'blogdetail'),
+    path('deleteblog/<int:id>/',delete_blog, name= 'deleteblog'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog List</title>
+</head>
+<body>
+    <div style="position:relative; border-radius: 10px; background-color: azure; border: 30px; ">
+    {% for i in data %}
+    
+    <a href="{% url 'blogdetail' i.id %}">  {{ i.title }} </a>
+
+    {% now "D-d-M-Y" %}
+
+    <p> Post Uploaded  date{{ i.created_date }} </p> <br>
+
+    <p> Post Uploaded  time {{ i.created_time }} </p> <br>
+
+    <p>{{ i.created_date |timesince}} ago </p> <br>
+
+    <p>{{ i.created_time |timesince}} ago </p> <br>
+
+    <img src="{{ i.photo.url }} " alt="image" width="auto" height="100px"><br>
+    {{ i.body }} <br>
+    <hr>
+    {% endfor %}
+    <br>
+    <br>
+    </div>
+</body>
+</html>

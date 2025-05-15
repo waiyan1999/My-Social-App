@@ -70,3 +70,49 @@ def createform(request):
             
             
     return render(request,'createform.html',{'fm':fm})
+
+
+
+
+# ========================== Day 10 =========================
+
+def create_blog(request):
+    
+    form = BlogModelForm()
+    context = {'form':form}
+    return render(request, 'createblog.html', context)
+
+
+def saveblog(request):
+    form = BlogModelForm()
+    if request.method == 'POST':
+        form = BlogModelForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            print('Blog successfully saved !')
+            return redirect('createblog') 
+        
+        else:
+            return HttpResponse('Error Occur !!!!!!!!!!!!!!!')
+        
+        
+        
+        
+    
+    
+def blog_list(request):
+    data = customer.objects.all()
+    context = {'data':data}
+    return render(request,'bloglist.html',context)
+        
+    
+def blog_detail(request,id):
+    detail_data = customer.objects.filter(id=id)
+    context = {'detail_data':detail_data}
+    return render(request,'blogdetail.html',context)    
+        
+        
+def delete_blog(request,id):
+    delete_data = customer.objects.filter(id=id)
+    delete_data.delete()
+    return redirect('bloglist')
